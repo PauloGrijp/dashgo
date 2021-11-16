@@ -1,4 +1,5 @@
-import { Flex, Input, Button, Stack, FormLabel, FormControl } from '@chakra-ui/react';
+import { Flex, Button, Stack, FormLabel, FormControl } from '@chakra-ui/react';
+import { Input } from '../components/Form/Input';
 
 export default function Home() {
   return (
@@ -17,38 +18,34 @@ export default function Home() {
         borderRadius={8}
         flexDir="column"
       >
-        <Stack spacing="4">
-          <FormControl>
-            <FormLabel htmlForm="email">E-mail</FormLabel>
-            <Input
-              name="email"
-              id="email"
-              type="email"
-              focusBorderColor="pink.500"
-              bgColor="gray.900"
-              variant="filled"
-              _hover={{
-                bgColor: "gray.900"
-              }}
-              size="lg"
-              />
-          </FormControl>
-          <FormControl>
-            <FormLabel htmlForm="password">Senha</FormLabel>
-            <Input
-              name="password"
-              id="password"
-              type="password"
-              focusBorderColor="pink.500"
-              bgColor="gray.900"
-              variant="filled"
-              _hover={{
-                bgColor: "gray.900"
-              }}
-              size="lg"
+        <Stack spacing="4">         
+          <Input
+            label="E-mail"
+            name="email"
+            id="email"
+            type="email"
+            focusBorderColor="pink.500"
+            bgColor="gray.900"
+            variant="filled"
+            _hover={{
+              bgColor: "gray.900"
+            }}
+            size="lg"
             />
-          </FormControl>
-
+        
+          <Input
+            label="Senha"
+            name="password"
+            id="password"
+            type="password"
+            focusBorderColor="pink.500"
+            bgColor="gray.900"
+            variant="filled"
+            _hover={{
+              bgColor: "gray.900"
+            }}
+            size="lg"
+          />         
         </Stack>
         <Button type="submit" mt="6" colorScheme="pink" size="lg">
           Entrar
