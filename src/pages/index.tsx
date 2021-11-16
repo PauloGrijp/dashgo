@@ -21,30 +21,14 @@ export default function Home() {
         <Stack spacing="4">         
           <Input
             label="E-mail"
-            name="email"
-            id="email"
-            type="email"
-            focusBorderColor="pink.500"
-            bgColor="gray.900"
-            variant="filled"
-            _hover={{
-              bgColor: "gray.900"
-            }}
-            size="lg"
-            />
+            name="email"           
+            type="email"            
+          />
         
           <Input
             label="Senha"
-            name="password"
-            id="password"
-            type="password"
-            focusBorderColor="pink.500"
-            bgColor="gray.900"
-            variant="filled"
-            _hover={{
-              bgColor: "gray.900"
-            }}
-            size="lg"
+            name="password"          
+            type="password"        
           />         
         </Stack>
         <Button type="submit" mt="6" colorScheme="pink" size="lg">
