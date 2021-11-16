@@ -68,8 +68,7 @@ export function Header() {
           </Box>
           <Avatar size="md" name="Paulo Xavier" src="https://github.com/PauloGrijp"/>
         </Flex>
-      </Flex>
-
+      </Flex>    
     </Flex>
   )
 }
