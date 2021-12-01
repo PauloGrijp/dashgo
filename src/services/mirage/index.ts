@@ -1,4 +1,4 @@
-import { createServer, Factory, Model, Response } from 'miragejs';
+import { createServer, Factory, Model, Response, ActiveModelSerializer } from 'miragejs';
 import faker from 'faker';
 
 type User = {
@@ -9,6 +9,10 @@ type User = {
 
 export function makeServer() {
   const server = createServer({
+    serializers: {
+      application: ActiveModelSerializer,
+    },
+
     models: {
       user: Model.extend<Partial<User>>({}) 
     },
@@ -16,7 +20,7 @@ export function makeServer() {
     factories: {
       user: Factory.extend({
         name(i: number) {
-          return faker.name.findName();
+          return `User ${i + 1}`;
         },
         email() {
           return faker.internet.email().toLowerCase();
@@ -36,7 +40,7 @@ export function makeServer() {
       this.timing = 750;
 
       this.get('/users', function (schema, request) {
-        const { page = 1, per_page = 10 } = request.params;
+        const { page = 1, per_page = 10 } = request.queryParams;
 
         const total = schema.all('user').length;
 
@@ -44,8 +48,8 @@ export function makeServer() {
         const pageEnd = pageStart + Number(per_page);
 
         const users = this.serialize(schema.all('user'))
-          .users.slice(pageStart, pageEnd);
-        
+          .users.slice(pageStart, pageEnd)
+
         return new Response(
           200,
           { 'x-total-count': String(total) },
