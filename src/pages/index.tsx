@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import { Flex, Button, Stack } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
@@ -21,6 +22,7 @@ export default function SignIn() {
 
   const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
     await new Promise(resolve => setTimeout(resolve, 2000));
+    Router.push('/dashboard');
   }
 
   return (
