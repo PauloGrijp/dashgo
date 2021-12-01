@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Link from 'next/link';
 import { RiAddLine } from "react-icons/ri";
+import { useEffect } from "react";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { SideBar } from "../../components/SideBar";
@@ -24,7 +25,14 @@ export default function UserList() {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
-  })
+  });
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/users')
+      .then(resp => resp.json())
+      .then(data => console.log(data))
+  }, []);
+
   return (
     <Box>
       <Header />
